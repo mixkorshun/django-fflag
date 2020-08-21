@@ -16,6 +16,12 @@ class FFlag:
     part: float
     ids: List[int]
 
+    def __str__(self):
+        return self.key
+
+    def __repr__(self):
+        return 'FFlag<%s>' % self.key
+
 
 def __fflag_new(flag: str):
     cache: BaseCache = caches[getattr(settings, 'FFLAG_CACHE_NAME', default_settings.FFLAG_CACHE_NAME)]
