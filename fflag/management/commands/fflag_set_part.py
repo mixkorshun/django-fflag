@@ -11,4 +11,6 @@ class Command(BaseCommand):
 
     def handle(self, key, part, **options):
         fflag_set_part(key, part)
-        self.stdout.write(pprint_fflag(fflag_get(key)))
+
+        fflag = fflag_get(key)
+        self.stdout.write(pprint_fflag(fflag))
