@@ -26,8 +26,8 @@ def __fflag_new(flag: str):
         cache.add('fflag_max_id', 0)
         fflag_id = cache.incr('fflag_max_id')
 
-    cache.set('fflag_id_%s' % fflag_id, flag)
-    cache.set('fflag_%s/id' % flag, fflag_id)
+    cache.set('fflag_id_%s' % fflag_id, flag, None)
+    cache.set('fflag_%s/id' % flag, fflag_id, None)
 
     return fflag_id
 
@@ -63,7 +63,7 @@ def __fflag_write(fflag: FFlag, attrs=()):
     for attr in attrs:
         data['fflag_%s/%s' % (fflag.key, attr)] = getattr(fflag, attr)
 
-    cache.set_many(data)
+    cache.set_many(data, None)
 
 
 def __fflag_delete(fflag: FFlag):
@@ -96,7 +96,7 @@ def fflag_list():
             if not flag:
                 continue
 
-            yield flag_id, flag
+            yield flag
 
 
 def fflag_rearrange():
@@ -127,7 +127,7 @@ def fflag_rearrange():
         'fflag_max_id': fflag_new_max_id,
         **({'fflag_%s/id' % flag: i for i, flag in enumerate(flags, 1)}),
         **({'fflag_id_%s' % i: flag for i, flag in enumerate(flags, 1)}),
-    })
+    }, None)
 
     cache.delete_many(['fflag_id_%s' % i for i in range(fflag_new_max_id, fflag_max_id)])
 
