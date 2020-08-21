@@ -1,5 +1,8 @@
 # django-fflag
 
+[![Build Status](https://travis-ci.org/mixkorshun/django-fflag.svg?branch=master)](https://travis-ci.org/mixkorshun/django-fflag)
+[![codecov](https://codecov.io/gh/mixkorshun/django-fflag/branch/master/graph/badge.svg)](https://codecov.io/gh/mixkorshun/django-fflag)
+
 Lightweight feature flag for django.
 
 Feature flag is useful technique to develop your software. When you implement new functionality in you project,
