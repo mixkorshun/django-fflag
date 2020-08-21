@@ -9,7 +9,7 @@ before_script:
 
 script:
   - flake8 fflag/
-  - python setup.py install
+  - python setup.py -q install
   - pytest tests/ --longrun
 
 after_success:
