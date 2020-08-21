@@ -5,12 +5,12 @@ python:
   - '3.6'
 
 before_script:
-  - pip install -q flake8 pytest codecov
+  - pip install -q flake8 pytest pytest-cov codecov
 
 script:
   - flake8 fflag/
   - python setup.py -q install
-  - pytest tests/ --longrun
+  - pytest --cov fflag/ tests/ --longrun
 
 after_success:
   - codecov
