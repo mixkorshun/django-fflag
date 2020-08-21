@@ -1,0 +1,16 @@
+sudo: false
+language: python
+cache: pip
+python:
+  - '3.6'
+
+before_script:
+  - pip install -q flake8 pytest codecov
+
+script:
+  - flake8 fflag/
+  - pip install -q django
+  - pytest tests/
+
+after_success:
+  - codecov
