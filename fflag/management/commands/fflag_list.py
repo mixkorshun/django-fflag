@@ -6,8 +6,8 @@ from ..utils import pprint_fflag_ids
 
 class Command(BaseCommand):
     def add_arguments(self, parser):
-        parser.add_argument('-0', '--only-disabled', nargs='?', dest='only_disabled', const=True)
-        parser.add_argument('-1', '--only-enabled', nargs='?', dest='only_enabled', const=True)
+        parser.add_argument('-0', '--only-disabled', action='store_true')
+        parser.add_argument('-1', '--only-enabled', action='store_true')
 
     def handle(self, **options):
         flags = fflag_list()
