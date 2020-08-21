@@ -36,8 +36,18 @@ MIDDLEWARE = (
     "fflags.middleware.FFlagMiddleware",
 )
 
-# persistent cache storage strongly recommended for feature-flags
-FFLAG_CACHE_NAME = "default"
+# Persistent cache storage strongly recommended for feature-flags.
+# You can configure custom persistent cache using following config:
+
+FFLAG_CACHE_NAME = "fflag"
+
+CACHES = {
+    ...,
+    "fflag": {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'NAME': 'fflag_flags',
+    }
+}
 ```
 
 ## Usage
