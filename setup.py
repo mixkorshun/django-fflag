@@ -4,10 +4,12 @@ from setuptools import setup, find_packages
 setup(
     name='django-fflag',
     version='0.1.0',
-    url='',
-    description='Feature flag for django',
-    keywords=['feature-flag'],
-    long_description='',
+    url='https://github.com/mixkorshun/django-fflag',
+    description='Lightweight feature flags for django',
+    keywords=['feature-flags', 'django'],
+
+    long_description=open('README.rst', 'r').read(),
+
     author='Vladislav Bakin',
     author_email='vladislav@bakin.me',
     maintainer='Vladislav Bakin',
