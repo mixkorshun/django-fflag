@@ -11,10 +11,6 @@ def _randstr(n):
     return ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(n))
 
 
-def setup_function(function):
-    caches['default'].clear()
-
-
 def test_fflag_disabled_by_default():
     flag = _randstr(8)
 

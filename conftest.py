@@ -1,3 +1,4 @@
+import django
 import pytest
 from django.conf import settings
 
@@ -12,6 +13,10 @@ def pytest_configure(config):
     settings.configure(
         SECRET_KEY='testing',
 
+        INSTALLED_APPS=[
+            'fflag',
+        ],
+
         CACHES={
             'default': {
                 'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
@@ -21,6 +26,15 @@ def pytest_configure(config):
         FFLAG_CACHE_NAME='default',
 
     )
+
+    django.setup()
+
+
+@pytest.fixture(autouse=True)
+def django_clear_cache():
+    yield
+    from django.core.cache import caches
+    caches['default'].clear()
 
 
 def pytest_addoption(parser):
