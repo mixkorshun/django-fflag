@@ -9,7 +9,7 @@ before_script:
 
 script:
   - flake8 fflag/
-  - pip install -q django
+  - python setup.py install
   - pytest tests/
 
 after_success:
