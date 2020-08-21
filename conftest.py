@@ -4,6 +4,8 @@ from django.conf import settings
 
 @pytest.mark.trylast
 def pytest_configure(config):
+    config.addinivalue_line("markers", "longrun: mark test as slow")
+
     if not config.option.longrun:
         setattr(config.option, 'markexpr', 'not longrun')
 
