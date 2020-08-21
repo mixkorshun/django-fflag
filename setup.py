@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+import sys
+
 from setuptools import setup, find_packages
 
 setup(
@@ -18,7 +20,10 @@ setup(
 
     license='MIT',
 
-    install_requires=[],
+    install_requires=['django'] + (
+        ['dataclasses'] if sys.version_info < (3, 6)
+        else []
+    ),
     tests_require=['pytest'],
 
     packages=find_packages(exclude=['tests.*', 'tests']),
