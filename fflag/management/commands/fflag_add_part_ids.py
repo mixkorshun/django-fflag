@@ -1,7 +1,7 @@
 from django.core.management import BaseCommand
 
-from ..utils import pprint_fflag
-from ...models import fflag_add_part_ids
+from ..pprint import pprint_fflag
+from ...models import fflag_add_part_ids, fflag_get
 
 
 class Command(BaseCommand):
@@ -11,4 +11,4 @@ class Command(BaseCommand):
 
     def handle(self, key, ids, **options):
         fflag_add_part_ids(key, ids)
-        pprint_fflag(key)
+        self.stdout.write(pprint_fflag(fflag_get(key)))

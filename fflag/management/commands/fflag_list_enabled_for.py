@@ -15,6 +15,6 @@ class Command(BaseCommand):
         show_all = options.get('show_all')
         for flag in fflag_list():
             if fflag_enabled(id, flag):
-                print('+%s' % flag if show_all else flag)
+                self.stdout.write('+%s' % flag if show_all else flag)
             elif show_all:
-                print('-%s' % flag)
+                self.stdout.write('-%s' % flag)

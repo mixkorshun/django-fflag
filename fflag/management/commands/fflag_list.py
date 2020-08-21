@@ -1,7 +1,7 @@
 from django.core.management import BaseCommand
 
 from fflag.models import fflag_list, fflag_get
-from ..utils import pprint_fflag_ids
+from ..pprint import pprint_fflag_short
 
 
 class Command(BaseCommand):
@@ -10,9 +10,10 @@ class Command(BaseCommand):
         parser.add_argument('-1', '--only-enabled', action='store_true')
 
     def handle(self, **options):
-        flags = fflag_list()
-        if not flags:
-            print('No flags found')
+        flags = list(fflag_list())
+
+        if not len(flags):
+            self.stdout.write('No flags found')
             return
 
         for flag in flags:
@@ -24,4 +25,4 @@ class Command(BaseCommand):
             if options.get('only_enabled') and (fflag.part != 1):
                 continue
 
-            print(fflag.key + ';', 'part=%s;' % fflag.part, 'part_ids=%s' % pprint_fflag_ids(fflag.ids))
+            self.stdout.write(pprint_fflag_short(fflag))
