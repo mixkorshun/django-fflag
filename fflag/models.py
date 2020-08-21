@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from functools import reduce
 from math import log10, floor
-from typing import List
+from typing import Sequence
 
 from django.conf import settings
 from django.core.cache import caches, BaseCache
@@ -14,7 +14,7 @@ class FFlag:
     id: int
     key: str
     part: float
-    ids: List[int]
+    ids: Sequence[int]
 
     def __str__(self):
         return self.key
@@ -151,13 +151,13 @@ def fflag_set_part(flag: str, part: float):
     __fflag_write(fflag, ('part',))
 
 
-def fflag_add_part_ids(flag: str, ids: List[int]):
+def fflag_add_part_ids(flag: str, ids: Sequence[int]):
     fflag = __fflag_read(flag)
-    fflag.ids = fflag.ids + ids
+    fflag.ids = tuple(fflag.ids) + tuple(ids)
     __fflag_write(fflag, ('ids',))
 
 
-def fflag_set_part_ids(flag: str, ids: List[int]):
+def fflag_set_part_ids(flag: str, ids: Sequence[int]):
     fflag = __fflag_read(flag)
     fflag.ids = ids
     __fflag_write(fflag, ('ids',))
