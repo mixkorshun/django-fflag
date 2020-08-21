@@ -8,7 +8,8 @@ setup(
     description='Lightweight feature flags for django',
     keywords=['feature-flags', 'django'],
 
-    long_description=open('README.rst', 'r').read(),
+    long_description=open('README.md', 'r').read(),
+    long_description_content_type='text/markdown',
 
     author='Vladislav Bakin',
     author_email='vladislav@bakin.me',
