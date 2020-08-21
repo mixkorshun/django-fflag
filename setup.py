@@ -21,7 +21,7 @@ setup(
     license='MIT',
 
     install_requires=['django'] + (
-        ['dataclasses'] if sys.version_info < (3, 6)
+        ['dataclasses'] if sys.version_info < (3, 7)
         else []
     ),
     tests_require=['pytest'],
