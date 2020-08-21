@@ -20,7 +20,7 @@ def fflag_enabled_method(self, flag: str, _id: int = None):
             if not _id:
                 # or write it to session
                 _id = int(now().timestamp())
-                self.session.set('FFLAG_USER_ID', _id)
+                self.session['FFLAG_USER_ID'] = _id
                 self.session.save()
 
     return fflag_enabled(_id, flag)

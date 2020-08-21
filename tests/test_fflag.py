@@ -4,8 +4,7 @@ import string
 import pytest
 from django.core.cache import caches
 
-from fflag import fflag_enabled, fflag_set_part
-from fflag.models import fflag_get, fflag_delete, fflag_rearrange
+from fflag.models import fflag_get, fflag_delete, fflag_rearrange, fflag_set_part, fflag_enabled
 
 
 def _randstr(n):
